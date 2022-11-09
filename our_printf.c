@@ -1,28 +1,76 @@
-#include "main.h"
 #include <stdio.h>
-#include <string.h>
+#include <stdarg.h>
+#include "main.h"
 #include <stdlib.h>
 #include <string.h>
-
-int _strlen(char *s)
-{
-    int i = 0
-    while (s[i])
-    i++;
-    return (i);
-}
-
-int _putchar(char c)
-{
-    return (write(1, &c, 1));
-}
-
+/**
+ * print_char - print char
+ * @ap: variable list
+ * Return: void
+ */
 void print_char(va_list ap)
 {
-int c = va_arg(ap)
-}
+	int c = va_arg(ap, int);
 
-void print_string(va list ap);
+	write(1, &c, 1);
+}
+/**
+ * print_str - print strings
+ * @ap: variable list
+ * Return: voiid
+ i**
+ */
+void print_str(va_list ap)
 {
-    
+
+	char *next_arg;
+
+	next_arg = va_arg(ap, char *);
+	next_arg == NULL ? next_arg = "(nil)" : next_arg;
+	write(1, next_arg, strlen(next_arg));
+}
+/**
+ * _printf - print float
+ * @format: the format scope
+ * Return: void
+ */
+int _printf(const char * const format, ...)
+{
+	va_list ap;
+	int i = 0;
+	int j;
+	int len = strlen(format);
+
+	print_arg ops[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{0, NULL}
+	};
+	if ((format == NULL) || ((format[i] == '%') && (len == 1)))
+	{
+		printf("\n");
+		return (len);
+	}
+	va_start(ap, format);
+	while (format[i] != '\0' && format)
+	{
+		if (format[i] == '%')
+		{
+			for (j = 0; j < 3; j++)
+			{
+				if (ops[j].t_arg == format[i + 1])
+				{
+					ops[j].f(ap);
+				}
+			}
+		}
+		if (format[i] > 48 && format[i] < 57)
+			write(1, &format[i], 1) + 0;
+		else
+			write(1, &format[i], 1);
+		i++;
+	}
+	printf("\n");
+	va_end(ap);
+	return (len);
 }
