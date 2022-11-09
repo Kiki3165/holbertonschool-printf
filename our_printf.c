@@ -48,7 +48,7 @@ int _printf(const char * const format, ...)
 	};
 	if ((format == NULL) || ((format[i] == '%') && (len == 1)))
 	{
-		printf("\n");
+		/*printf("\n");*/
 		return (len);
 	}
 	va_start(ap, format);
@@ -64,13 +64,13 @@ int _printf(const char * const format, ...)
 				}
 			}
 		}
-		if (format[i] > 48 && format[i] < 57)
-			write(1, &format[i], 1) + 0;
+		if (format[i] >= 48 && format[i] <= 57)
+			write(1, &format[i], 1);
 		else
 			write(1, &format[i], 1);
 		i++;
 	}
-	printf("\n");
+	/*printf("\n");*/
 	va_end(ap);
 	return (len);
 }
