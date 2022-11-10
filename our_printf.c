@@ -39,41 +39,43 @@ int _printf(const char * const format, ...)
 	va_list ap;
 	int i = 0;
 	int j;
-	int len = strlen(format);
+	int len = 0;
 
 	print_arg ops[] = {
 		{'c', print_char},
 		{'s', print_str},
 		{0, NULL}
 	};
-	if ((format == NULL) || ((format[i] == '%') && (len == 1)))
+	if ((format == NULL))
 	{
-		/*printf("\n");*/
-		return (len);
+		return (-1);
 	}
 	va_start(ap, format);
-	while (format[i] != '\0' && format)
+	while (format && format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '%')
-				i = i + 1;
-			for (j = 0; j <= 3; j++)
 			{
-				if (ops[j].t_arg == format[i + 1])
+				len += write(1, &format[i], 1);
+				i = i + 1;
+			}
+			else
+			{
+				for (j = 0; ops[j].t_arg; j++)
 				{
-					ops[j].f(ap);
-					i = i + 2;
+					if (ops[j].t_arg == format[i + 1])
+					{
+						len += ops[j].f(ap);
+						i = i + 1;
+					}
 				}
 			}
 		}
-		if (format[i] >= 48 && format[i] <= 57)
-			write(1, &format[i], 1);
 		else
-			write(1, &format[i], 1);
+			len += write(1, &format[i], 1);
 		i++;
 	}
-	/*printf("\n");*/
 	va_end(ap);
 	return (len);
 }
