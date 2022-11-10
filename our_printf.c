@@ -55,8 +55,9 @@ int _printf(const char * const format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
+			if (format[i + 1] != ops[j].t_arg)
 			{
+				i = i + 1;
 				len += write(1, &format[i], 1);
 			}
 			else
