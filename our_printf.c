@@ -26,7 +26,7 @@ int print_str(va_list ap)
 	char *next_arg;
 
 	next_arg = va_arg(ap, char *);
-	next_arg == NULL ? next_arg = "(nil)" : next_arg;
+	next_arg == NULL ? next_arg = "(NULL)" : next_arg;
 	return (write(1, next_arg, strlen(next_arg)));
 }
 /**
