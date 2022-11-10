@@ -22,11 +22,10 @@ int print_char(va_list ap)
  */
 int print_str(va_list ap)
 {
-
 	char *next_arg;
 
 	next_arg = va_arg(ap, char *);
-	next_arg == NULL ? next_arg = "(NULL)" : next_arg;
+	next_arg == NULL ? next_arg = "(null)" : next_arg;
 	return (write(1, next_arg, strlen(next_arg)));
 }
 /**
@@ -46,7 +45,7 @@ int _printf(const char * const format, ...)
 		{'s', print_str},
 		{0, NULL}
 	};
-	if ((format == NULL))
+	if (format == NULL || ((format[i] == '%') && (format[i + 1] == '\0')))
 	{
 		return (-1);
 	}
@@ -62,20 +61,23 @@ int _printf(const char * const format, ...)
 			}
 			else
 			{
-				for (j = 0; ops[j].t_arg; j++)
+
+			for (j = 0; ops[j].t_arg != 0; j++)
+				if (ops[j].t_arg == format[i + 1])
 				{
-					if (ops[j].t_arg == format[i + 1])
-					{
-						len += ops[j].f(ap);
-						i = i + 1;
-					}
+					len += ops[j].f(ap);
+					i = i + 1;
+					break;
 				}
+			if (ops[j].t_arg == 0)
+				len += write(1, &format[i], 1);
 			}
 		}
-		else
+		else	
 			len += write(1, &format[i], 1);
-		i++;
+	i++;
 	}
-	va_end(ap);
-	return (len);
+va_end(ap);
+return (len);
 }
+
