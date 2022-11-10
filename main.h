@@ -20,7 +20,7 @@ int print_str(va_list ap);
 typedef struct print
 {
 	char t_arg;
-	void (*f)(va_list);
+	int (*f)(va_list);
 } print_arg;
 
 #endif
