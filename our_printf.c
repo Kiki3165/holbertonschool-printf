@@ -63,7 +63,7 @@ int _printf(const char * const format, ...)
 				if (ops[j].t_arg == format[i + 1])
 				{
 					ops[j].f(ap);
-					i = i + 1;
+					
 				}
 			}
 		}
