@@ -17,8 +17,8 @@ int print_char(va_list ap)
 /**
  * print_str - print strings
  * @ap: variable list
- * Return: voiid
- i**
+ * Return: void
+ *
  */
 int print_str(va_list ap)
 {
@@ -63,7 +63,7 @@ int _printf(const char * const format, ...)
 				if (ops[j].t_arg == format[i + 1])
 				{
 					ops[j].f(ap);
-					i = i + 3;
+					i = i + 2;
 				}
 			}
 		}
