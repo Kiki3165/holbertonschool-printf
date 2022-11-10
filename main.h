@@ -8,8 +8,8 @@
 #include <unistd.h>
 
 int _printf(const char * const format, ...);
-void print_char(va_list ap);
-void print_string(va_list ap);
+int print_char(va_list ap);
+int print_str(va_list ap);
 
 /**
  * struct print - a structure
