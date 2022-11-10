@@ -8,11 +8,11 @@
  * @ap: variable list
  * Return: void
  */
-void print_char(va_list ap)
+int print_char(va_list ap)
 {
 	int c = va_arg(ap, int);
 
-	write(1, &c, 1);
+	return (write(1, &c, 1));
 }
 /**
  * print_str - print strings
@@ -20,14 +20,14 @@ void print_char(va_list ap)
  * Return: voiid
  i**
  */
-void print_str(va_list ap)
+int print_str(va_list ap)
 {
 
 	char *next_arg;
 
 	next_arg = va_arg(ap, char *);
 	next_arg == NULL ? next_arg = "(nil)" : next_arg;
-	write(1, next_arg, strlen(next_arg));
+	return (write(1, next_arg, strlen(next_arg)));
 }
 /**
  * _printf - print float
