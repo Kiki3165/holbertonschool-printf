@@ -70,7 +70,7 @@ int _printf(const char * const format, ...)
 		if (format[i] >= 48 && format[i] <= 57)
 			write(1, &format[i], 1);
 		else
-			return (write(1, &format[i], 1));
+			write(1, &format[i], 1);
 		i++;
 	}
 	/*printf("\n");*/
