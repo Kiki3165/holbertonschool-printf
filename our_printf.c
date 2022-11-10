@@ -58,7 +58,7 @@ int _printf(const char * const format, ...)
 		{
 			if (format[i + 1] == '%')
 				(i = i + 1);
-			for (j = 0; j < 3; j++)
+			for (j = 0; j <= 3; j++)
 			{
 				if (ops[j].t_arg == format[i + 1])
 				{
