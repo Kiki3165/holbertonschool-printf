@@ -58,7 +58,7 @@ int _printf(const char * const format, ...)
 			if (format[i + 1] == '%')
 			{
 				len += write(1, &format[i], 1);
-				
+				i = i + 2;
 			}
 			else
 			{
