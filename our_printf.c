@@ -53,9 +53,11 @@ int _printf(const char * const format, ...)
 	va_start(ap, format);
 	while (format && format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (ops[i].t_arg == 0)
 		{
-			if (format[i + 1] = '%')
+			len += write(1, &format[i], 1);
+			len += write(1, &format[i + 1], 1);
+			if (format[i + 1] == '%')
 			{
 				i = i + 1;
 				len += write(1, &format[i], 1);
