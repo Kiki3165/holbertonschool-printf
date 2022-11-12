@@ -33,56 +33,53 @@ int print_integer(va_list ap)
 
 	while (divisor != 0)
 	{
-		counter += _putchar(tmp / divisor + '0');
-		tmp %= divisor;
-		divisor = divisor / 10;
+	counter += _putchar(tmp / divisor + '0');
+	tmp %= divisor;
+	divisor = divisor / 10;
 	}
 	return (counter);
 }
 /**
- * print_char - print char
- * @ap: variable list
- * Return: void
+ *print_char - print char
+ *@ap: variable list
+ *Return: void
  */
 int print_char(va_list ap)
 {
-	int c = va_arg(ap, int);
-
-	return (write(1, &c, 1));
+    int c = va_arg(ap, int);
+    return (write(1, &c, 1));
 }
 /**
- * print_str - print strings
- * @ap: variable list
- * Return: void
- *
- */
+*print_str - print strings
+*@ap: variable list
+*Return: void
+*
+*/
 int print_str(va_list ap)
 {
-	char *next_arg;
-
-	next_arg = va_arg(ap, char *);
-	next_arg == NULL ? next_arg = "(null)" : next_arg;
-	return (write(1, next_arg, strlen(next_arg)));
+char *next_arg;
+next_arg = va_arg(ap, char *);
+next_arg == NULL ? next_arg = "(null)" : next_arg;
+return (write(1, next_arg, strlen(next_arg)));
 }
 /**
- * _printf - print float
- * @format: the format scope
- * Return: void
- */
+* _printf - print float
+* @format: the format scope
+* Return: void
+*/
 int _printf(const char * const format, ...)
 {
-    va_list ap;
-    int i = 0, j = 0, len = 0;
-
-    print_arg ops[] = {
-        {'c', print_char},
-        {'s', print_str},
+va_list ap;
+int i = 0, j = 0, len = 0;
+print_arg ops[] = {
+    {'c', print_char},
+    {'s', print_str},
 	{'i', print_integer},
 	{'d', print_integer},
-        {0, NULL}
+    {0, NULL}
     };
     if (format == NULL || ((format[i] == '%') && (format[i + 1] == '\0')))
-        return (-1);
+    return (-1);
     va_start(ap, format);
     for (; format && format[i] != '\0'; i++)
     {
