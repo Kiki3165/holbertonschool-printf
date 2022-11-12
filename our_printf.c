@@ -18,7 +18,7 @@ int print_char(va_list ap)
 * print_integer - print integer
 *
 *@ap: variable list
-*
+*Return: counter
 */
 int print_integer(va_list ap)
 {
