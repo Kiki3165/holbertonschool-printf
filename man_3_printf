@@ -1,0 +1,72 @@
+.TH _PRINTF 1
+.SH NAME
+_printf \- a function that mimics printf which formats and prints data
+.SH SYNOPSIS
+.B _printf
+int _printf(const char *format, ...)
+.SH DESCRIPTION
+_printf is a function that prints arguments and according to predifined format specifiers
+.B _printf
+This is a functions that deals untill this moment with 6 format specifiers %, c, s, d, i each one of them will be discussed below
+.SH conversion SPECIFIERS
+.TP
+.BR 
+A character that specifies the type of conversion to be applied.
+.TP
+.BR 
+Note:
+.TP
+.BR 
+***flag charachrters ar not handled
+.TP
+.BR 
+***field width is not handled
+.TP
+.BR 
+***precision is not handled
+.TP
+.BR 
+***length modifiers are not handle
+.TP
+.BR 
+***The conversion specifiers and their meanings are:
+.TP
+.BR d, i
+The int argument is converted to signed decimal notation.
+.TP
+.BR s
+the const char * argument is
+expected to be a pointer to an array of character type
+(pointer to a string).  Characters from the array are
+written up to (but not including) a terminating null byte('\0');
+.TP
+.BR c
+an argument of type char will be written.
+However if an int argument is introduced it will be converted to an unsigned char, 
+and the resulting character is written.
+.TP
+.BR %%
+Print a single %
+.TP
+.BR %s
+Print an argument of type string
+.TP
+.BR %c
+Print an argument of type char
+.TP
+.BR %d
+Print an argument of type integer
+.TP
+.BR %i
+Print an argument of type integer
+.SH RETURN VALUES
+The number of characters printed (excluding tha null byte used to end output to strings). Write output to stdout, the standart output stream.
+
+.SH SEE ALSO
+printf(3)
+.SH REPORTING BUGS
+5653@holbertonstudents.com
+.SH COPY WRITE
+this code is copy write free.
+.SH AUTHOR
+Mohamad AL ANNAN / Kyllian Terrasson
