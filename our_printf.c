@@ -76,6 +76,8 @@ int _printf(const char * const format, ...)
 	print_arg ops[] = {
 		{'c', print_char},
 		{'s', print_str},
+		{'i', print_integer},
+		{'d', print_integer},
 		{0, NULL}
 	};
 	if (format == NULL || ((format[i] == '%') && (format[i + 1] == '\0')))
