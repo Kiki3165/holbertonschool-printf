@@ -69,10 +69,8 @@ int print_str(va_list ap)
  * Return: void
  */
 int _printf(const char * const format, ...)
-{
-	va_list ap;
+{	va_list ap;
 	int i = 0, j = 0, len = 0;
-
 	print_arg ops[] = {
 		{'c', print_char},
 		{'s', print_str},
@@ -82,7 +80,6 @@ int _printf(const char * const format, ...)
 	};
 	if (format == NULL || ((format[i] == '%') && (format[i + 1] == '\0')))
 		return (-1);
-
 	va_start(ap, format);
 	while (format && format[i] != '\0')
 	{
