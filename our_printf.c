@@ -12,6 +12,42 @@
 */
 int print_integer(va_list ap)
 {
+    int counter;
+	int number, divisor;
+	unsigned int tmp;
+
+	divisor = 1;
+	number = va_arg(ap, int);
+	counter = 0;
+
+	if (number < 0)
+	{
+		counter += _putchar('-');
+		tmp = number * -1;
+	}
+	else
+		tmp = number;
+
+	while (tmp / divisor > 9)
+		divisor = divisor * 10;
+
+	while (divisor != 0)
+	{
+		counter += _putchar(tmp / divisor + '0');
+		tmp %= divisor;
+		divisor = divisor / 10;
+	}
+	return (counter);
+}
+/**
+*
+*print_integer - print integer
+*
+*@ap: variable list
+*
+*/
+int print_integer(va_list ap)
+{
     int i = va_arg(ap, int);
     return (write(1, &i, 1));
 }
