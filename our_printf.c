@@ -15,15 +15,14 @@ int print_char(va_list ap)
 	return (write(1, &c, 1));
 }
 /**
-*
-*print_integer - print integer
+* print_integer - print integer
 *
 *@ap: variable list
 *
 */
 int print_integer(va_list ap)
 {
-    int counter;
+int counter;
 	int number, divisor;
 	unsigned int tmp;
 
