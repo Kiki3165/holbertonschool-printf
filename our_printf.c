@@ -40,18 +40,6 @@ int print_integer(va_list ap)
 	return (counter);
 }
 /**
-*
-*print_integer - print integer
-*
-*@ap: variable list
-*
-*/
-int print_integer(va_list ap)
-{
-    int i = va_arg(ap, int);
-    return (write(1, &i, 1));
-}
-/**
  * print_char - print char
  * @ap: variable list
  * Return: void
